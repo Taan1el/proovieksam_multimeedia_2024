@@ -90,7 +90,6 @@ npm run dev
 
 Brauser: **http://localhost:3005** (vt `.env`).
 
-### GitHub Pages (Moodul 3 veebis)
 
 Avalik leht: **[https://Taan1el.github.io/proovieksam_multimeedia_2024/](https://Taan1el.github.io/proovieksam_multimeedia_2024/)** (pärast esimest edukat deploy’t).
 

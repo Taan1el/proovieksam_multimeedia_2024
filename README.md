@@ -90,6 +90,15 @@ npm run dev
 
 Brauser: **http://localhost:3005** (vt `.env`).
 
+### GitHub Pages (Moodul 3 veebis)
+
+Avalik leht: **[https://Taan1el.github.io/proovieksam_multimeedia_2024/](https://Taan1el.github.io/proovieksam_multimeedia_2024/)** (pärast esimest edukat deploy’t).
+
+1. **GitHub →** repo **[proovieksam_multimeedia_2024](https://github.com/Taan1el/proovieksam_multimeedia_2024)** → **Settings** → **Pages**.
+2. **Build and deployment** → **Source**: vali **GitHub Actions** (mitte `Deploy from a branch`).
+3. Pushi `main` harule — workflow `.github/workflows/deploy-github-pages.yml` laadib üles kausta `moodul3/` ja avaldab selle.
+4. Oota **Actions** vaates rohelist märki; seejärel ava ülalolev URL.
+
 ---
 
 ## 3. Pildid (`moodul3/assets/img/`)
@@ -106,7 +115,7 @@ HTML viitab praegu **sinu Moodul 2 failidele** (nimed peavad kattuma):
 | Kruus | `mug_mockup.jpg` või `mug_mockup.png` |
 | Logo (valikuline) | `Logo.png` |
 
-**Hero bänner** kasutab sama musta T-särgi mockupi (`tshirt_mockup_black.jpg`), kuni lisad eraldi `hero-mockup.jpg` juurkausta `assets/img/` ja muudad `index.html`-is `src`.
+
 
 **Tiim:** kui lisad `team-1.jpg` … `team-5.jpg` kausta `assets/img/`, laadivad need; muidu jäävad initsiaalid.
 
@@ -114,15 +123,8 @@ HTML viitab praegu **sinu Moodul 2 failidele** (nimed peavad kattuma):
 
 ---
 
-## 4. Esitamise kontrollnimekiri
 
-- [ ] Zip **`TaanielVananurmEksam.zip`** sisaldab **moodul1 … moodul4** ja vajadusel **`docs/MULTIMEEDIA EKSAM 2024.pdf`**.
-- [ ] `moodul4/git-link.txt` sisaldab Git repositooriumi URL-i.
-- [ ] `.env` ei sisalda tootmisparoole avalikus Gitis (kasuta `.env.example`).
-
----
-
-## 5. Tehnoloogiad (lühidalt)
+## 4. Tehnoloogiad (lühidalt)
 
 - **Moodul 3:** HTML5, CSS3, JS (ilma kohustusliku bundlerita).
 - **Moodul 4:** Node.js, Express, EJS, express-session, multer, failipõhine **`db.json`** (kerge prototüüp, ilma eraldi SQL serverita).

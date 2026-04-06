@@ -1,0 +1,23 @@
+<%- include('../partials/header', { title: 'Admin – sisselogimine', user: null }) %>
+
+<section style="padding:16px 0">
+  <div class="card" style="padding:14px;max-width:520px;margin:0 auto">
+    <h2>Admin – sisselogimine</h2>
+    <% if (error) { %>
+      <div class="card" style="padding:12px;border-color:rgba(239,68,68,.5)"><%= error %></div>
+    <% } %>
+    <form method="POST" action="/admin/login">
+      <div class="field">
+        <label>E-post</label>
+        <input name="email" type="email" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label>Parool</label>
+        <input name="password" type="password" autocomplete="current-password" />
+      </div>
+      <button class="btn primary" type="submit">Logi sisse</button>
+    </form>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

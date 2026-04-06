@@ -1,0 +1,40 @@
+<%- include('../../partials/header', { title: 'Admin – tooted', user }) %>
+
+<section style="padding:16px 0" class="card" style="padding:14px">
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px" class="card">
+    <div>
+      <h2 style="margin:0">Tooted</h2>
+      <div class="muted">Lisamine / muutmine / kustutamine</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn green" href="/admin/products/create">Lisa toode</a>
+      <a class="btn" href="/admin/contacts">Kontaktid</a>
+    </div>
+  </div>
+
+  <div class="card" style="padding:14px;margin-top:12px">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Nimi</th><th>Kategooria</th><th>Hind</th><th>Tegevused</th></tr>
+      </thead>
+      <tbody>
+        <% products.forEach(p => { %>
+          <tr>
+            <td><%= p.id %></td>
+            <td><%= p.name %></td>
+            <td class="muted"><%= p.category %></td>
+            <td>€<%= p.price %></td>
+            <td>
+              <a class="btn" href="/admin/products/<%= p.id %>/edit">Muuda</a>
+              <form method="POST" action="/admin/products/<%= p.id %>/delete" style="display:inline">
+                <button class="btn" type="submit" onclick="return confirm('Kustuta toode?')">Kustuta</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>

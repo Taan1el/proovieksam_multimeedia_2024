@@ -1,0 +1,34 @@
+<%- include('../partials/header', { title: 'Admin – kontaktid', user }) %>
+
+<section style="padding:16px 0">
+  <div class="card" style="padding:14px">
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+      <div>
+        <h2 style="margin:0">Kontaktid</h2>
+        <div class="muted">Sõnumid kontaktivormist (<code>db.json</code>)</div>
+      </div>
+      <a class="btn" href="/admin/products">← Toodete juurde</a>
+    </div>
+
+    <div class="card" style="padding:14px;margin-top:12px">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Nimi</th><th>E-post</th><th>Sõnum</th><th>Aeg</th></tr>
+        </thead>
+        <tbody>
+          <% contacts.forEach(c => { %>
+            <tr>
+              <td><%= c.id %></td>
+              <td><%= c.name %></td>
+              <td class="muted"><%= c.email %></td>
+              <td><%= c.message %></td>
+              <td class="muted"><%= c.created_at %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

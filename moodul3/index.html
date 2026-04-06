@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS – Tiimi leht</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/nexus.css" />
+</head>
+<body class="nx-page">
+
+<nav class="nx-nav">
+  <a href="./index.html" class="logo">
+    <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="160" height="36" />
+  </a>
+  <button type="button" class="nav-toggle" data-nav-toggle aria-label="Ava menüü">☰</button>
+  <ul data-nav-links>
+    <li><a href="#liikmed">Liikmed</a></li>
+    <li><a href="#mangud">Mängud</a></li>
+    <li><a href="#tulemused">Tulemused</a></li>
+    <li><a href="#voistlusmangud">Võistlusmängud</a></li>
+    <li><a href="#meened">Meened</a></li>
+    <li><a href="./shop.html">E-pood</a></li>
+    <li><a href="./contact.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><span></span> Tiim · Hooaeg 2024/25</div>
+    <h1 class="hero-title">WE ARE<br><span class="accent">NEXUS</span></h1>
+    <p class="hero-sub">Ühendatud mängijad. Ühendatud eesmärk. Kõik võidud algavad ühest sammust.</p>
+    <div class="hero-cta">
+      <a href="#liikmed" class="nx-btn nx-btn-primary">Tutvu tiimiga</a>
+      <a href="#tulemused" class="nx-btn nx-btn-ghost">Vaata tulemusi</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-value">12</div><div class="stat-label">Mängu mängitud</div></div>
+  <div class="stat"><div class="stat-value">8</div><div class="stat-label">Võitu</div></div>
+  <div class="stat"><div class="stat-value">2</div><div class="stat-label">Viiki</div></div>
+  <div class="stat"><div class="stat-value">2</div><div class="stat-label">Kaotust</div></div>
+  <div class="stat"><div class="stat-value">5</div><div class="stat-label">Liiget</div></div>
+</div>
+
+<section class="nx-section" id="embleem">
+  <div class="section-label">Identiteet</div>
+  <div class="emblem-section">
+    <div class="emblem-display">
+      <svg class="emblem-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="160" height="160" rx="20" fill="#10101E"/>
+        <path d="M80 20 L140 80 L80 140 L20 80 Z" stroke="#00FF88" stroke-width="2" fill="none" opacity=".3"/>
+        <path d="M80 36 L124 80 L80 124 L36 80 Z" stroke="#00FF88" stroke-width="1.5" fill="none" opacity=".5"/>
+        <text x="80" y="97" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="44" letter-spacing="-2" fill="#00FF88">NX</text>
+        <circle cx="80" cy="20"  r="3" fill="#00FF88"/>
+        <circle cx="140" cy="80" r="3" fill="#00FF88"/>
+        <circle cx="80" cy="140" r="3" fill="#00FF88"/>
+        <circle cx="20" cy="80"  r="3" fill="#00FF88"/>
+      </svg>
+    </div>
+    <div class="emblem-info">
+      <div class="section-label">Visuaalne identiteet</div>
+      <h2>Embleem &amp;<br>Värvid</h2>
+      <p style="color:var(--muted); font-size:15px; max-width:420px;">
+        Teemant-kujuline raamistik sümboliseerib tiimi tugevust ja ühtsust.
+        „NX“ initsiaalid on loetavad nii väikesel meenel kui suurel banerilt.
+      </p>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#00FF88;"></div>
+          <div>
+            <div style="font-weight:500">Aktsent</div>
+            <div class="swatch-code">#00FF88</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#0D0D1A; border:1px solid rgba(255,255,255,.1)"></div>
+          <div>
+            <div style="font-weight:500">Taust</div>
+            <div class="swatch-code">#0D0D1A</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#10101E; border:1px solid rgba(255,255,255,.1)"></div>
+          <div>
+            <div style="font-weight:500">Pind</div>
+            <div class="swatch-code">#10101E</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#F0F0F0;"></div>
+          <div>
+            <div style="font-weight:500">Tekst</div>
+            <div class="swatch-code">#F0F0F0</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#FF3A5C;"></div>
+          <div>
+            <div style="font-weight:500">Oht/Kaotus</div>
+            <div class="swatch-code">#FF3A5C</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section" id="liikmed">
+  <div class="section-label">Meeskond</div>
+  <h2>Tiimi liikmed</h2>
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="member-avatar">
+        <img src="./assets/img/team-1.jpg" alt="" loading="lazy" onerror="this.classList.add('is-fail')" />
+        <span class="member-initials">MK</span>
+      </div>
+      <div class="member-name">Marten Kask</div>
+      <div class="member-role">Kapten</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">
+        <img src="./assets/img/team-2.jpg" alt="" loading="lazy" onerror="this.classList.add('is-fail')" />
+        <span class="member-initials">LP</span>
+      </div>
+      <div class="member-name">Laura Põld</div>
+      <div class="member-role">Kaitsja</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">
+        <img src="./assets/img/team-3.jpg" alt="" loading="lazy" onerror="this.classList.add('is-fail')" />
+        <span class="member-initials">AV</span>
+      </div>
+      <div class="member-name">Andres Vaher</div>
+      <div class="member-role">Ründaja</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">
+        <img src="./assets/img/team-4.jpg" alt="" loading="lazy" onerror="this.classList.add('is-fail')" />
+        <span class="member-initials">KR</span>
+      </div>
+      <div class="member-name">Kati Roos</div>
+      <div class="member-role">Keskmängija</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">
+        <img src="./assets/img/team-5.jpg" alt="" loading="lazy" onerror="this.classList.add('is-fail')" />
+        <span class="member-initials">TL</span>
+      </div>
+      <div class="member-name">Tõnis Laan</div>
+      <div class="member-role">Väravavaht</div>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section" id="voistlusmangud" style="background:var(--surface)">
+  <div class="section-label">E-spordi mängud</div>
+  <h2>Võistlusmängud</h2>
+  <p style="color:var(--muted); max-width:560px; margin-bottom:20px">Tiim osaleb järgmistes mängudes ja liigades.</p>
+  <ul class="game-title-list">
+    <li>EA SPORTS FC (jalgpall)</li>
+    <li>Rocket League</li>
+    <li>Counter-Strike 2</li>
+    <li>Valorant</li>
+  </ul>
+</section>
+
+<section class="nx-section" id="mangud">
+  <div class="section-label">Mängud</div>
+  <h2>Mängugraafik</h2>
+  <table class="games-table">
+    <thead>
+      <tr>
+        <th>Kuupäev</th>
+        <th>Vastane</th>
+        <th>Asukoht</th>
+        <th>Skoor</th>
+        <th>Tulemus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--muted)">10.09.2024</td>
+        <td><strong>ALPHA FC</strong></td>
+        <td>Kodu</td>
+        <td class="score">3 – 1</td>
+        <td><span class="result-badge result-w">VÕIT</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">18.09.2024</td>
+        <td><strong>Storm United</strong></td>
+        <td>Võõrsil</td>
+        <td class="score">1 – 2</td>
+        <td><span class="result-badge result-l">KAOTUS</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">25.09.2024</td>
+        <td><strong>Vega Sports</strong></td>
+        <td>Kodu</td>
+        <td class="score">2 – 2</td>
+        <td><span class="result-badge result-d">VIIK</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">02.10.2024</td>
+        <td><strong>Titan XI</strong></td>
+        <td>Kodu</td>
+        <td class="score">4 – 0</td>
+        <td><span class="result-badge result-w">VÕIT</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">15.10.2024</td>
+        <td><strong>Nordex FC</strong></td>
+        <td>Võõrsil</td>
+        <td class="score">2 – 1</td>
+        <td><span class="result-badge result-w">VÕIT</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="nx-section" id="tulemused" style="background:var(--surface)">
+  <div class="section-label">Liigaseis</div>
+  <h2>Tabeli seis</h2>
+  <table class="games-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tiim</th>
+        <th>M</th>
+        <th>V</th>
+        <th>Vi</th>
+        <th>K</th>
+        <th>Punkt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(0,255,136,.04)">
+        <td style="color:var(--accent); font-weight:700">1</td>
+        <td><strong style="color:var(--accent)">NEXUS ←</strong></td>
+        <td>12</td><td>8</td><td>2</td><td>2</td>
+        <td><strong style="color:var(--accent)">26</strong></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">2</td>
+        <td>Titan XI</td>
+        <td>12</td><td>7</td><td>1</td><td>4</td>
+        <td><strong>22</strong></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">3</td>
+        <td>Nordex FC</td>
+        <td>12</td><td>6</td><td>3</td><td>3</td>
+        <td><strong>21</strong></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">4</td>
+        <td>ALPHA FC</td>
+        <td>12</td><td>5</td><td>2</td><td>5</td>
+        <td><strong>17</strong></td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">5</td>
+        <td>Storm United</td>
+        <td>12</td><td>3</td><td>2</td><td>7</td>
+        <td><strong>11</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="nx-section" id="meened">
+  <div class="section-label">Meened</div>
+  <h2>Populaarsed meened</h2>
+  <p style="color:var(--muted); margin:-24px 0 20px; max-width:560px;">Kõik tooted ja filtrid: <a href="./shop.html" style="color:var(--accent)">E-pood</a>.</p>
+  <div class="merch-slider" data-merch-slider>
+    <button type="button" class="merch-slider-arrow" data-merch-prev aria-label="Eelmine">◀</button>
+    <div class="merch-slider-scroll" data-merch-track tabindex="0">
+      <a class="merch-card merch-card--slide" href="./shop.html">
+        <div class="merch-img merch-img--photo">
+          <img src="./assets/img/shop/tshirt_mockup_black.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" />
+        </div>
+        <div class="merch-body">
+          <div class="merch-name">NEXUS T-särk</div>
+          <div class="merch-desc">100% orgaaniline puuvill</div>
+        </div>
+      </a>
+      <a class="merch-card merch-card--slide" href="./shop.html">
+        <div class="merch-img merch-img--photo">
+          <img src="./assets/img/shop/tshirt_mockup_green.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" />
+        </div>
+        <div class="merch-body">
+          <div class="merch-name">T-särk (roheline)</div>
+          <div class="merch-desc">100% puuvill</div>
+        </div>
+      </a>
+      <a class="merch-card merch-card--slide" href="./shop.html">
+        <div class="merch-img merch-img--photo">
+          <img src="./assets/img/shop/mouse_mockup.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" />
+        </div>
+        <div class="merch-body">
+          <div class="merch-name">NEXUS Hiir</div>
+          <div class="merch-desc">Embleem graveeritud</div>
+        </div>
+      </a>
+      <a class="merch-card merch-card--slide" href="./shop.html">
+        <div class="merch-img merch-img--photo">
+          <img src="./assets/img/shop/cap_mockup.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" />
+        </div>
+        <div class="merch-body">
+          <div class="merch-name">NEXUS Müts</div>
+          <div class="merch-desc">Snapback</div>
+        </div>
+      </a>
+      <a class="merch-card merch-card--slide" href="./shop.html">
+        <div class="merch-img merch-img--photo">
+          <img src="./assets/img/shop/mug_mockup.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" />
+        </div>
+        <div class="merch-body">
+          <div class="merch-name">NEXUS Kruus</div>
+          <div class="merch-desc">330 ml</div>
+        </div>
+      </a>
+      <a class="merch-card merch-card--slide" href="./shop.html">
+        <div class="merch-img merch-img--photo">
+          <img src="./assets/img/shop/tshirt_mockup_white.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" />
+        </div>
+        <div class="merch-body">
+          <div class="merch-name">T-särk (valge)</div>
+          <div class="merch-desc">Limiteeritud</div>
+        </div>
+      </a>
+    </div>
+    <button type="button" class="merch-slider-arrow" data-merch-next aria-label="Järgmine">▶</button>
+  </div>
+</section>
+
+<footer class="nx-footer">
+  <div>
+    <a href="./index.html" class="logo">
+      <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="140" height="28" />
+    </a>
+    <div class="footer-contact">
+      <a href="./contact.html">Kontakt</a>
+      <span class="footer-sep">·</span>
+      <span>hello@nexus.gg</span>
+    </div>
+  </div>
+  <div class="footer-copy">© 2024–2026 NEXUS</div>
+</footer>
+
+<script src="./assets/js/main.js"></script>
+</body>
+</html>

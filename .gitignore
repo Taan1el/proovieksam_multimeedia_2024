@@ -1,0 +1,10 @@
+# Moodul 4
+moodul4/backend/node_modules/
+moodul4/backend/.env
+moodul4/backend/public/uploads/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.log
+docs/MULTIMEEDIA EKSAM 2024.pdf

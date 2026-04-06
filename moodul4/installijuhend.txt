@@ -1,0 +1,33 @@
+Moodul 4 – installijuhend (Multimeedia eksam)
+==============================================
+
+Vajalik tarkvara
+----------------
+- Node.js LTS (https://nodejs.org/) – kohustuslik
+- Tekstiredaktor / IDE (nt Visual Studio Code) – soovitatav
+- Git – kui repositoorium kloonitakse või esitatakse Git URL-iga
+
+Paigaldamine ja käivitamine
+----------------------------
+1. Ava terminal kaustas: moodul4/backend
+2. Käivita: npm install
+3. Kopeeri .env.example faili nimega .env
+4. Muuda .env failis vajadusel: ADMIN_EMAIL, ADMIN_PASSWORD, SESSION_SECRET, PORT (vaikimisi 3005)
+5. Käivita: npm run dev
+
+Brauser (kontrollimiseks)
+-------------------------
+- Avalik e-pood:     http://localhost:3005/shop
+- Toode (detail):    http://localhost:3005/product/1  (või olemasolev id)
+- Kontakt (server):   http://localhost:3005/contact
+- Admin login:       http://localhost:3005/admin/login
+- Kontaktide nimekiri: http://localhost:3005/admin/contacts
+
+Moodul 3 staatiline sait + kontakt API
+--------------------------------------
+Kui käivitad moodul3 lehti HTTP serveriga (nt: npx --yes serve -l 5173 moodul3),
+võib contact.html vorm saata sõnumi backendile, kui vormil on data-contact-api
+ja server jookseb (vaikimisi http://localhost:3005/api/contact).
+
+Täielik ülevaade (struktuur, pildid, eksami nõuded):
+  repositooriumi juurkausta README.md  (see on projektis ainus README fail).

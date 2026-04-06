@@ -1,0 +1,51 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "created_at": "2026-04-06T19:27:02.276Z",
+      "name": "NEXUS Tee (Black)",
+      "description": "Puuvill, NX logo, limiteeritud seeria.",
+      "price": 29,
+      "category": "tshirt",
+      "sizes": "S, M, L, XL",
+      "colors": "Must, Roheline, Valge"
+    },
+    {
+      "id": 2,
+      "created_at": "2026-04-06T19:27:02.277Z",
+      "name": "NEXUS Mouse",
+      "description": "Hiir embleemiga.",
+      "price": 49,
+      "category": "mouse",
+      "sizes": "—",
+      "colors": "Must"
+    },
+    {
+      "id": 3,
+      "created_at": "2026-04-06T19:27:02.277Z",
+      "name": "NEXUS Cap",
+      "description": "Müts brodeeritud logoga.",
+      "price": 24,
+      "category": "hat",
+      "sizes": "Üks suurus",
+      "colors": "Must"
+    },
+    {
+      "id": 4,
+      "created_at": "2026-04-06T19:27:02.277Z",
+      "name": "NEXUS Mug",
+      "description": "Kruus 330 ml.",
+      "price": 18,
+      "category": "mug",
+      "sizes": "—",
+      "colors": "Must matt"
+    }
+  ],
+  "product_images": [],
+  "contacts": [],
+  "_nextId": {
+    "products": 5,
+    "product_images": 1,
+    "contacts": 1
+  }
+}

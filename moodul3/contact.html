@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NEXUS – Kontakt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/nexus.css" />
+    <link rel="stylesheet" href="./assets/css/pages.css" />
+  </head>
+  <body class="nx-page">
+    <nav class="nx-nav">
+      <a href="./index.html" class="logo">
+        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="160" height="36" />
+      </a>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Ava menüü">☰</button>
+      <ul data-nav-links>
+        <li><a href="./index.html">Avaleht</a></li>
+        <li><a href="./shop.html">E-pood</a></li>
+        <li><a href="./contact.html" class="nx-active">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <main class="nx-page-main">
+      <section>
+        <div class="grid cols-2">
+          <div class="card form">
+            <h2>Kontaktivorm</h2>
+            <p class="muted">Kirjuta meile või helista — vastame tööpäeviti.</p>
+            <form data-contact>
+              <div class="field">
+                <label>Nimi</label>
+                <input name="name" autocomplete="name" />
+                <div class="error" data-error="name"></div>
+              </div>
+              <div class="field">
+                <label>E-post</label>
+                <input name="email" type="email" autocomplete="email" />
+                <div class="error" data-error="email"></div>
+              </div>
+              <div class="field">
+                <label>Sõnum</label>
+                <textarea name="message" rows="5"></textarea>
+                <div class="error" data-error="message"></div>
+              </div>
+              <div class="cta-row">
+                <button class="btn primary" type="submit">Saada</button>
+                <span class="muted" data-status></span>
+              </div>
+            </form>
+          </div>
+          <div class="card" style="padding:20px">
+            <div class="section-label">Kontakt</div>
+            <h2 style="font-family:var(--font-head);font-size:22px;margin:0 0 12px">NEXUS</h2>
+            <div class="muted">E-post: hello@nexus.gg</div>
+            <div class="muted">Tel: +372 5555 5555</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="nx-footer">
+      <a href="./index.html" class="logo">
+        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="140" height="28" />
+      </a>
+      <div class="footer-copy">© 2024–2026 NEXUS</div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,49 +1,60 @@
 <!doctype html>
 <html lang="et">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NEXUS – Toode</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/nexus.css" />
-    <link rel="stylesheet" href="./assets/css/pages.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEXUS - Toode</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/img/shop/nexus_logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/nexus.css">
+    <link rel="stylesheet" href="./assets/css/pages.css">
   </head>
   <body class="nx-page">
     <nav class="nx-nav">
-      <a href="./index.html" class="logo">
-        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="160" height="36" />
+      <a href="./index.html" class="logo" aria-label="NEXUS home">
+        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="160" height="36">
       </a>
-      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Ava menüü">☰</button>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Ava menüü">&#9776;</button>
       <ul data-nav-links>
-        <li><a href="./index.html">Avaleht</a></li>
-        <li><a href="./shop.html">E-pood</a></li>
-        <li><a href="./contact.html">Kontakt</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./shop.html">Store</a></li>
+        <li><a href="./contact.html">Contact</a></li>
       </ul>
     </nav>
 
     <main class="nx-page-main" data-product-page data-product-detail>
+      <section class="page-hero page-hero-compact">
+        <div class="page-hero-copy">
+          <span class="section-label">Product detail</span>
+          <h1>Closer look at the drop</h1>
+          <p>Multiple images, sizes, colors and a focused layout that mirrors the storefront style.</p>
+        </div>
+      </section>
+
       <section>
-        <div class="grid cols-2">
-          <div class="card" style="padding:20px">
-            <div class="section-label">Toode</div>
-            <h2 style="font-family:var(--font-head);font-size:22px;margin:0 0 12px">Galerii</h2>
+        <div class="grid cols-2 product-layout">
+          <div class="card product-gallery-card">
+            <div class="section-label">Gallery</div>
+            <h2>Visual carousel</h2>
             <div class="carousel-viewport" data-carousel-main></div>
-            <div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px">
-              <button class="btn" type="button" data-car-prev>◀</button>
-              <button class="btn" type="button" data-car-next>▶</button>
+            <div class="carousel-controls">
+              <button class="btn" type="button" data-car-prev>&#9664;</button>
+              <button class="btn" type="button" data-car-next>&#9654;</button>
             </div>
             <div class="carousel-thumbs" data-product-thumbs></div>
           </div>
 
-          <div class="card" style="padding:20px">
-            <div class="badge">Laos</div>
-            <h2 style="font-family:var(--font-head);font-size:26px;margin:10px 0 6px" data-product-title>Toode</h2>
-            <div class="muted" data-product-desc></div>
-            <div style="margin:14px 0" class="price" data-product-price>€0</div>
+          <div class="card product-detail-card">
+            <div class="product-badge">In stock</div>
+            <h2 data-product-title>Toode</h2>
+            <div class="muted product-detail-copy" data-product-desc></div>
+            <div class="price product-price" data-product-price>EUR 0</div>
 
             <div class="product-options-block" data-product-size-row>
-              <div class="section-label">Valik</div>
-              <p style="font-size:14px;margin:0 0 8px;font-weight:500">Suurus</p>
+              <div class="section-label">Options</div>
+              <p class="option-title">Size</p>
               <div class="options">
                 <button class="option active" type="button" data-size>S</button>
                 <button class="option" type="button" data-size>M</button>
@@ -52,18 +63,33 @@
               </div>
             </div>
 
-            <div class="product-options-block" style="padding-top:14px" data-product-color-row>
-              <p style="font-size:14px;margin:0 0 8px;font-weight:500">Värv</p>
+            <div class="product-options-block" data-product-color-row>
+              <p class="option-title">Color</p>
               <div class="options">
-                <button class="option active" type="button" data-color>Must</button>
-                <button class="option" type="button" data-color>Roheline</button>
-                <button class="option" type="button" data-color>Valge</button>
+                <button class="option active" type="button" data-color>Black</button>
+                <button class="option" type="button" data-color>Green</button>
+                <button class="option" type="button" data-color>White</button>
               </div>
             </div>
 
-            <div class="cta-row" style="margin-top:18px">
-              <button class="btn primary" type="button">Lisa korvi</button>
-              <a class="btn" href="./shop.html">Tagasi poodi</a>
+            <div class="detail-stats">
+              <div>
+                <strong>Drop type</strong>
+                <span>Official team merch</span>
+              </div>
+              <div>
+                <strong>Shipping</strong>
+                <span>EU-wide delivery</span>
+              </div>
+              <div>
+                <strong>Finish</strong>
+                <span>Clean NX emblem branding</span>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <button class="btn primary" type="button">Add to cart</button>
+              <a class="btn" href="./shop.html">Back to store</a>
             </div>
           </div>
         </div>
@@ -72,9 +98,9 @@
 
     <footer class="nx-footer">
       <a href="./index.html" class="logo">
-        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="140" height="28" />
+        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="140" height="28">
       </a>
-      <div class="footer-copy">© 2024–2026 NEXUS</div>
+      <div class="footer-copy">&copy; 2024-2026 NEXUS</div>
     </footer>
 
     <script src="./assets/js/main.js"></script>

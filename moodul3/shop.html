@@ -1,50 +1,65 @@
 <!doctype html>
 <html lang="et">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NEXUS – E-pood</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/nexus.css" />
-    <link rel="stylesheet" href="./assets/css/pages.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEXUS - E-pood</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/img/shop/nexus_logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/nexus.css">
+    <link rel="stylesheet" href="./assets/css/pages.css">
   </head>
   <body class="nx-page">
     <nav class="nx-nav">
-      <a href="./index.html" class="logo">
-        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="160" height="36" />
+      <a href="./index.html" class="logo" aria-label="NEXUS home">
+        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="160" height="36">
       </a>
-      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Ava menüü">☰</button>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Ava menüü">&#9776;</button>
       <ul data-nav-links>
-        <li><a href="./index.html">Avaleht</a></li>
-        <li><a href="./shop.html" class="nx-active">E-pood</a></li>
-        <li><a href="./contact.html">Kontakt</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./shop.html" class="nx-active">Store</a></li>
+        <li><a href="./contact.html">Contact</a></li>
       </ul>
     </nav>
 
     <main class="nx-page-main">
-      <section style="margin-bottom:24px">
+      <section class="page-hero">
+        <div class="page-hero-copy">
+          <span class="section-label">Storefront</span>
+          <h1>Official NEXUS merch</h1>
+          <p>Stagewear, desk gear and limited drops styled to match the team identity.</p>
+        </div>
+        <div class="page-hero-media">
+          <img src="./assets/img/shop/tshirt_mockup_green.jpg" alt="Featured NEXUS shirt" loading="lazy">
+        </div>
+      </section>
+
+      <section class="toolbar-shell">
         <div class="card toolbar shop-toolbar">
           <div class="shop-toolbar-head">
-            <h2>E-pood</h2>
+            <h2>Filter the drop</h2>
+            <p class="muted">Sort by category, set your max budget and jump into the matching product detail page.</p>
           </div>
           <div class="shop-toolbar-controls">
             <div class="chips">
-              <button class="chip active" type="button" data-chip="all">Kõik</button>
-              <button class="chip" type="button" data-chip="tshirt">T-särgid</button>
-              <button class="chip" type="button" data-chip="mouse">Hiir</button>
-              <button class="chip" type="button" data-chip="hat">Müts</button>
-              <button class="chip" type="button" data-chip="mug">Kruus</button>
+              <button class="chip active" type="button" data-chip="all">All</button>
+              <button class="chip" type="button" data-chip="tshirt">Shirts</button>
+              <button class="chip" type="button" data-chip="mouse">Mouse</button>
+              <button class="chip" type="button" data-chip="hat">Cap</button>
+              <button class="chip" type="button" data-chip="mug">Mug</button>
             </div>
             <div class="shop-toolbar-row">
               <select data-sort aria-label="Sorteeri">
-                <option value="name">Nimi</option>
-                <option value="price-asc">Hind ↑</option>
-                <option value="price-desc">Hind ↓</option>
+                <option value="name">Name</option>
+                <option value="price-asc">Price low-high</option>
+                <option value="price-desc">Price high-low</option>
               </select>
               <div class="price-range">
-                <label class="price-range-label" for="shop-price-range">Maksimaalne hind</label>
-                <input id="shop-price-range" data-price type="range" min="10" max="60" value="60" />
-                <div class="price-range-value muted" data-price-label>≤ €60</div>
+                <label class="price-range-label" for="shop-price-range">Maximum price</label>
+                <input id="shop-price-range" data-price type="range" min="10" max="60" value="60">
+                <div class="price-range-value muted" data-price-label>&lt;= EUR 60</div>
               </div>
             </div>
           </div>
@@ -53,35 +68,35 @@
 
       <section>
         <div class="grid cols-3" data-products>
-          <a class="card product" data-product data-category="tshirt" data-price="29" data-name="NEXUS Tee (Black)" href="./product.html?id=tee-black">
-            <div class="thumb"><img src="./assets/img/shop/tshirt_mockup_black.jpg" alt="NEXUS T-särk must" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" /></div>
+          <a class="card product" data-product data-category="tshirt" data-price="29" data-name="NEXUS Tee Black" href="./product.html?id=tee-black">
+            <div class="thumb"><img src="./assets/img/shop/tshirt_mockup_black.jpg" alt="NEXUS black shirt" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'"></div>
             <b>NEXUS Tee (Black)</b>
-            <div class="row"><span class="muted">T-särgid</span><span class="price">€29</span></div>
+            <div class="row"><span class="muted">Stage jersey</span><span class="price">EUR 29</span></div>
           </a>
-          <a class="card product" data-product data-category="tshirt" data-price="31" data-name="NEXUS Tee (Green)" href="./product.html?id=tee-green">
-            <div class="thumb"><img src="./assets/img/shop/tshirt_mockup_green.jpg" alt="NEXUS T-särk roheline" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" /></div>
+          <a class="card product" data-product data-category="tshirt" data-price="31" data-name="NEXUS Tee Green" href="./product.html?id=tee-green">
+            <div class="thumb"><img src="./assets/img/shop/tshirt_mockup_green.jpg" alt="NEXUS green shirt" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'"></div>
             <b>NEXUS Tee (Green)</b>
-            <div class="row"><span class="muted">T-särgid</span><span class="price">€31</span></div>
+            <div class="row"><span class="muted">Away colorway</span><span class="price">EUR 31</span></div>
           </a>
           <a class="card product" data-product data-category="hat" data-price="24" data-name="NEXUS Cap" href="./product.html?id=cap">
-            <div class="thumb"><img src="./assets/img/shop/cap_mockup.jpg" alt="NEXUS müts" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" /></div>
+            <div class="thumb"><img src="./assets/img/shop/cap_mockup.jpg" alt="NEXUS cap" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'"></div>
             <b>NEXUS Cap</b>
-            <div class="row"><span class="muted">Müts</span><span class="price">€24</span></div>
+            <div class="row"><span class="muted">Snapback</span><span class="price">EUR 24</span></div>
           </a>
           <a class="card product" data-product data-category="mouse" data-price="49" data-name="NEXUS Mouse" href="./product.html?id=mouse">
-            <div class="thumb"><img src="./assets/img/shop/mouse_mockup.jpg" alt="NEXUS hiir" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" /></div>
+            <div class="thumb"><img src="./assets/img/shop/mouse_mockup.jpg" alt="NEXUS mouse" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'"></div>
             <b>NEXUS Mouse</b>
-            <div class="row"><span class="muted">Hiir</span><span class="price">€49</span></div>
+            <div class="row"><span class="muted">Setup gear</span><span class="price">EUR 49</span></div>
           </a>
           <a class="card product" data-product data-category="mug" data-price="18" data-name="NEXUS Mug" href="./product.html?id=mug">
-            <div class="thumb"><img src="./assets/img/shop/mug_mockup.jpg" alt="NEXUS kruus" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" /></div>
+            <div class="thumb"><img src="./assets/img/shop/mug_mockup.jpg" alt="NEXUS mug" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'"></div>
             <b>NEXUS Mug</b>
-            <div class="row"><span class="muted">Kruus</span><span class="price">€18</span></div>
+            <div class="row"><span class="muted">Desk setup</span><span class="price">EUR 18</span></div>
           </a>
-          <a class="card product" data-product data-category="tshirt" data-price="35" data-name="NEXUS Tee (White)" href="./product.html?id=tee-white">
-            <div class="thumb"><img src="./assets/img/shop/tshirt_mockup_white.jpg" alt="NEXUS T-särk valge" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'" /></div>
+          <a class="card product" data-product data-category="tshirt" data-price="35" data-name="NEXUS Tee White" href="./product.html?id=tee-white">
+            <div class="thumb"><img src="./assets/img/shop/tshirt_mockup_white.jpg" alt="NEXUS white shirt" loading="lazy" onerror="this.onerror=null;this.src='./assets/img/shop/merch-placeholder.svg'"></div>
             <b>NEXUS Tee (White)</b>
-            <div class="row"><span class="muted">T-särgid</span><span class="price">€35</span></div>
+            <div class="row"><span class="muted">Clean edition</span><span class="price">EUR 35</span></div>
           </a>
         </div>
       </section>
@@ -89,9 +104,9 @@
 
     <footer class="nx-footer">
       <a href="./index.html" class="logo">
-        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="140" height="28" />
+        <img class="logo-mark" src="./assets/img/shop/nexus_logo.svg" alt="NEXUS" width="140" height="28">
       </a>
-      <div class="footer-copy">© 2024–2026 NEXUS</div>
+      <div class="footer-copy">&copy; 2024-2026 NEXUS</div>
     </footer>
 
     <script src="./assets/js/main.js"></script>

@@ -1,5 +1,1 @@
-Lisa siia oma Git repositooriumi URL (HTTPS või SSH) enne eksami esitamist.
-
-Näide: https://github.com/kasutaja/proovieksam-multimeedia.git
-
-Taaniel Vananurm (MM-23): https://github.com/Taan1el/proovieksam_multimeedia_2024
+https://github.com/Taan1el/proovieksam_multimeedia_2024

@@ -3,8 +3,14 @@ moodul4/backend/node_modules/
 moodul4/backend/.env
 moodul4/backend/public/uploads/
 
+# Duplicate folder
+moodul1/export_pildid/
+
+# Generated packages and local reference material
+*.zip
+docs/
+
 # OS / IDE
 .DS_Store
 Thumbs.db
 *.log
-docs/MULTIMEEDIA EKSAM 2024.pdf

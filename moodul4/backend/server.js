@@ -11,10 +11,112 @@ import { requireAuth } from './src/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const projectRoot = path.join(__dirname, '..', '..');
+const publicDir = path.join(__dirname, 'public');
+const uploadDir = path.join(publicDir, 'uploads');
+const catalogDir = path.join(publicDir, 'catalog');
+const teamDir = path.join(publicDir, 'team');
 
-const uploadDir = path.join(__dirname, 'public', 'uploads');
-fs.mkdirSync(uploadDir, { recursive: true });
+const FEATURE_ORDER = [
+  'NEXUS Tee (Black)',
+  'NEXUS Tee (Green)',
+  'NEXUS Cap',
+  'NEXUS Mouse',
+  'NEXUS Mug',
+  'NEXUS Tee (White)',
+];
 
+const TEAM_PLAYERS = [
+  { image: '/team/team-1.png', alt: 'Marten Kask player portrait' },
+  { image: '/team/team-2.png', alt: 'Laura Pold player portrait' },
+  { image: '/team/team-3.png', alt: 'Andres Vaher player portrait' },
+  { image: '/team/team-4.png', alt: 'Kati Roos player portrait' },
+  { image: '/team/team-5.png', alt: 'Tonis Laan player portrait' },
+];
+
+const GAMES = [
+  { tag: '01', title: 'EA SPORTS FC', copy: 'Fast tempo, pressure play and set-piece discipline.' },
+  { tag: '02', title: 'Rocket League', copy: 'Mechanical reads, rotations and aerial control.' },
+  { tag: '03', title: 'Counter-Strike 2', copy: 'Default structure, site hits and clutch-heavy executes.' },
+  { tag: '04', title: 'Valorant', copy: 'Utility layering, map control and late-round composure.' },
+];
+
+const RECENT_MATCHES = [
+  { date: '10.09.2024', opponent: 'ALPHA FC', venue: 'Home', score: '3 - 1', result: 'WIN' },
+  { date: '18.09.2024', opponent: 'Storm United', venue: 'Away', score: '1 - 2', result: 'LOSS' },
+  { date: '25.09.2024', opponent: 'Vega Sports', venue: 'Home', score: '2 - 2', result: 'DRAW' },
+  { date: '02.10.2024', opponent: 'Titan XI', venue: 'Home', score: '4 - 0', result: 'WIN' },
+  { date: '15.10.2024', opponent: 'Nordex FC', venue: 'Away', score: '2 - 1', result: 'WIN' },
+];
+
+const STANDINGS = [
+  { rank: 1, team: 'NEXUS', played: 12, wins: 8, draws: 2, losses: 2, points: 26, highlight: true },
+  { rank: 2, team: 'Titan XI', played: 12, wins: 7, draws: 1, losses: 4, points: 22 },
+  { rank: 3, team: 'Nordex FC', played: 12, wins: 6, draws: 3, losses: 3, points: 21 },
+  { rank: 4, team: 'ALPHA FC', played: 12, wins: 5, draws: 2, losses: 5, points: 17 },
+  { rank: 5, team: 'Storm United', played: 12, wins: 3, draws: 2, losses: 7, points: 11 },
+];
+
+const FEATURED_MATCH = {
+  title: 'NEXUS vs TITAN XI',
+  copy: 'Prime division playoff night. Map pool locked, jersey drop live, stream opens at 19:30.',
+  meta: ['18 OCT', 'TALLINN STAGE', '19:30 EET'],
+};
+
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+function copyIfMissing(sourcePath, targetPath) {
+  if (!fs.existsSync(sourcePath) || fs.existsSync(targetPath)) return;
+  fs.copyFileSync(sourcePath, targetPath);
+}
+
+function ensurePublicAssets() {
+  ensureDir(publicDir);
+  ensureDir(uploadDir);
+  ensureDir(catalogDir);
+  ensureDir(teamDir);
+
+  const catalogSource = path.join(projectRoot, 'moodul2', 'used_files');
+  [
+    'cap_mockup.jpg',
+    'mouse_mockup.jpg',
+    'mug_mockup.jpg',
+    'tshirt_mockup_black.jpg',
+    'tshirt_mockup_green.jpg',
+    'tshirt_mockup_white.jpg',
+  ].forEach((file) => {
+    copyIfMissing(path.join(catalogSource, file), path.join(catalogDir, file));
+  });
+
+  const teamSource = path.join(projectRoot, 'moodul3', 'assets', 'img', 'team');
+  ['team-1.svg', 'team-2.svg', 'team-3.svg', 'team-4.svg', 'team-5.svg', 'team-1.png', 'team-2.png', 'team-3.png', 'team-4.png', 'team-5.png'].forEach((file) => {
+    copyIfMissing(path.join(teamSource, file), path.join(teamDir, file));
+  });
+}
+
+function buildCatalogProducts() {
+  const products = db.allProducts().map((product) => ({
+    ...product,
+    images: db.getProductImages(product.id),
+  }));
+
+  products.sort((a, b) => {
+    const aIdx = FEATURE_ORDER.indexOf(a.name);
+    const bIdx = FEATURE_ORDER.indexOf(b.name);
+    const safeA = aIdx === -1 ? Number.MAX_SAFE_INTEGER : aIdx;
+    const safeB = bIdx === -1 ? Number.MAX_SAFE_INTEGER : bIdx;
+    return safeA - safeB;
+  });
+
+  return products.map((product) => ({
+    ...product,
+    thumb: product.images[0]?.path || null,
+  }));
+}
+
+ensurePublicAssets();
 ensureSchema();
 ensureAdmin();
 
@@ -32,32 +134,39 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(publicDir));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'devsecret',
   resave: false,
   saveUninitialized: false,
 }));
 
-const upload = multer({ dest: path.join(__dirname, 'public', 'uploads') });
+const upload = multer({ dest: uploadDir });
 
-// Public
-app.get('/', (req, res) => res.redirect('/shop'));
+app.get('/', (req, res) => {
+  const products = buildCatalogProducts();
+  res.render('home', {
+    user: req.session.user,
+    featuredProducts: products.slice(0, 4),
+    players: TEAM_PLAYERS,
+    games: GAMES,
+    recentMatches: RECENT_MATCHES,
+    standings: STANDINGS,
+    featuredMatch: FEATURED_MATCH,
+  });
+});
 
 app.get('/shop', (req, res) => {
-  let products = db.allProducts().map((p) => ({
-    ...p,
-    thumb: db.getProductImages(p.id)[0]?.path || null,
-  }));
+  let products = buildCatalogProducts();
 
-  const cat = String(req.query.category || 'all').toLowerCase();
+  const category = String(req.query.category || 'all').toLowerCase();
   const sort = String(req.query.sort || 'name');
   const maxPrice = Number(req.query.maxPrice || 9999);
 
-  if (cat !== 'all') {
-    products = products.filter((p) => String(p.category || '').toLowerCase() === cat);
+  if (category !== 'all') {
+    products = products.filter((product) => String(product.category || '').toLowerCase() === category);
   }
-  products = products.filter((p) => Number(p.price) <= maxPrice);
+  products = products.filter((product) => Number(product.price) <= maxPrice);
 
   if (sort === 'price-asc') products.sort((a, b) => Number(a.price) - Number(b.price));
   else if (sort === 'price-desc') products.sort((a, b) => Number(b.price) - Number(a.price));
@@ -82,15 +191,17 @@ function validateContactBody(body) {
   const email = (body.email || '').trim();
   const message = (body.message || '').trim();
   const errors = {};
-  if (!name) errors.name = 'Nimi on kohustuslik';
-  if (!email || !email.includes('@')) errors.email = 'Kehtiv e-post on kohustuslik';
-  if (!message || message.length < 10) errors.message = 'Sõnum peab olema vähemalt 10 tähemärki';
+  if (!name) errors.name = 'Name is required';
+  if (!email || !email.includes('@')) errors.email = 'Valid e-mail is required';
+  if (!message || message.length < 10) errors.message = 'Message must be at least 10 characters';
   return { name, email, message, errors };
 }
 
 app.post('/contact', (req, res) => {
   const { name, email, message, errors } = validateContactBody(req.body);
-  if (Object.keys(errors).length) return res.status(400).render('contact', { ok: false, user: req.session.user, errors });
+  if (Object.keys(errors).length) {
+    return res.status(400).render('contact', { ok: false, user: req.session.user, errors });
+  }
 
   db.insertContact({ name, email, message });
   res.redirect('/contact?ok=1');
@@ -103,26 +214,27 @@ app.post('/api/contact', (req, res) => {
   res.json({ ok: true });
 });
 
-// Auth
 app.get('/admin/login', (req, res) => res.render('admin/login', { error: null }));
 app.post('/admin/login', (req, res) => {
   const email = (req.body.email || '').trim();
   const password = (req.body.password || '').trim();
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
   const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+
   if (email === adminEmail && password === adminPassword) {
     req.session.user = { email };
     return res.redirect('/admin/products');
   }
-  res.status(401).render('admin/login', { error: 'Vale e-post või parool' });
-});
-app.post('/admin/logout', (req, res) => {
-  req.session.destroy(() => res.redirect('/shop'));
+
+  res.status(401).render('admin/login', { error: 'Wrong e-mail or password' });
 });
 
-// Admin products CRUD
+app.post('/admin/logout', (req, res) => {
+  req.session.destroy(() => res.redirect('/'));
+});
+
 app.get('/admin/products', requireAuth, (req, res) => {
-  const products = db.allProducts();
+  const products = buildCatalogProducts();
   res.render('admin/products/index', { products, user: req.session.user });
 });
 
@@ -133,10 +245,10 @@ app.get('/admin/products/create', requireAuth, (req, res) => {
 app.post('/admin/products', requireAuth, upload.array('images', 6), (req, res) => {
   const { name, description, price, category, sizes, colors } = req.body;
   const errors = {};
-  if (!name?.trim()) errors.name = 'Nimi on kohustuslik';
-  if (!description?.trim()) errors.description = 'Kirjeldus on kohustuslik';
-  if (!price || Number(price) <= 0) errors.price = 'Hind peab olema suurem kui 0';
-  if (!category?.trim()) errors.category = 'Kategooria on kohustuslik';
+  if (!name?.trim()) errors.name = 'Name is required';
+  if (!description?.trim()) errors.description = 'Description is required';
+  if (!price || Number(price) <= 0) errors.price = 'Price must be greater than 0';
+  if (!category?.trim()) errors.category = 'Category is required';
 
   if (Object.keys(errors).length) {
     return res.status(400).render('admin/products/form', { product: req.body, images: [], errors, user: req.session.user });
@@ -151,8 +263,8 @@ app.post('/admin/products', requireAuth, upload.array('images', 6), (req, res) =
     colors: (colors || '').trim(),
   });
 
-  for (const f of (req.files || [])) {
-    db.addImage(product.id, '/uploads/' + path.basename(f.path));
+  for (const file of (req.files || [])) {
+    db.addImage(product.id, '/uploads/' + path.basename(file.path));
   }
 
   res.redirect('/admin/products');
@@ -171,14 +283,19 @@ app.post('/admin/products/:id', requireAuth, upload.array('images', 6), (req, re
 
   const { name, description, price, category, sizes, colors } = req.body;
   const errors = {};
-  if (!name?.trim()) errors.name = 'Nimi on kohustuslik';
-  if (!description?.trim()) errors.description = 'Kirjeldus on kohustuslik';
-  if (!price || Number(price) <= 0) errors.price = 'Hind peab olema suurem kui 0';
-  if (!category?.trim()) errors.category = 'Kategooria on kohustuslik';
+  if (!name?.trim()) errors.name = 'Name is required';
+  if (!description?.trim()) errors.description = 'Description is required';
+  if (!price || Number(price) <= 0) errors.price = 'Price must be greater than 0';
+  if (!category?.trim()) errors.category = 'Category is required';
 
   if (Object.keys(errors).length) {
     const images = db.getProductImages(product.id);
-    return res.status(400).render('admin/products/form', { product: { ...product, ...req.body }, images, errors, user: req.session.user });
+    return res.status(400).render('admin/products/form', {
+      product: { ...product, ...req.body },
+      images,
+      errors,
+      user: req.session.user,
+    });
   }
 
   db.updateProduct(product.id, {
@@ -190,8 +307,8 @@ app.post('/admin/products/:id', requireAuth, upload.array('images', 6), (req, re
     colors: (colors || '').trim(),
   });
 
-  for (const f of (req.files || [])) {
-    db.addImage(product.id, '/uploads/' + path.basename(f.path));
+  for (const file of (req.files || [])) {
+    db.addImage(product.id, '/uploads/' + path.basename(file.path));
   }
 
   res.redirect('/admin/products');
@@ -212,4 +329,3 @@ app.listen(port, () => {
   console.log(`Moodul4 running on http://localhost:${port}`);
   console.log(`Admin login: ${process.env.ADMIN_EMAIL || 'admin@example.com'} / ${process.env.ADMIN_PASSWORD || 'admin123'}`);
 });
-

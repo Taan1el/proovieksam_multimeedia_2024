@@ -1,40 +1,46 @@
-<%- include('../../partials/header', { title: 'Admin – tooted', user }) %>
+<%- include('../../partials/header', { title: 'NEXUS - Admin products', user }) %>
 
-<section style="padding:16px 0" class="card" style="padding:14px">
-  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px" class="card">
-    <div>
-      <h2 style="margin:0">Tooted</h2>
-      <div class="muted">Lisamine / muutmine / kustutamine</div>
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn green" href="/admin/products/create">Lisa toode</a>
-      <a class="btn" href="/admin/contacts">Kontaktid</a>
-    </div>
-  </div>
+<section class="page-intro compact-intro">
+  <span class="eyebrow">Admin</span>
+  <h1>Product dashboard</h1>
+  <p>Add, edit and remove products while keeping the public store in sync.</p>
+</section>
 
-  <div class="card" style="padding:14px;margin-top:12px">
-    <table>
-      <thead>
-        <tr><th>#</th><th>Nimi</th><th>Kategooria</th><th>Hind</th><th>Tegevused</th></tr>
-      </thead>
-      <tbody>
-        <% products.forEach(p => { %>
-          <tr>
-            <td><%= p.id %></td>
-            <td><%= p.name %></td>
-            <td class="muted"><%= p.category %></td>
-            <td>€<%= p.price %></td>
-            <td>
-              <a class="btn" href="/admin/products/<%= p.id %>/edit">Muuda</a>
-              <form method="POST" action="/admin/products/<%= p.id %>/delete" style="display:inline">
-                <button class="btn" type="submit" onclick="return confirm('Kustuta toode?')">Kustuta</button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
+<section class="dashboard-actions">
+  <a class="button primary" href="/admin/products/create">Add product</a>
+  <a class="button ghost" href="/admin/contacts">Open inbox</a>
+</section>
+
+<section class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Images</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach((product) => { %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><strong><%= product.name %></strong></td>
+          <td><%= product.category %></td>
+          <td>EUR <%= product.price %></td>
+          <td><%= product.images.length %></td>
+          <td class="table-actions">
+            <a class="button ghost small" href="/admin/products/<%= product.id %>/edit">Edit</a>
+            <form method="POST" action="/admin/products/<%= product.id %>/delete">
+              <button class="button ghost small" type="submit" onclick="return confirm('Delete product?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </section>
 
 <%- include('../../partials/footer') %>

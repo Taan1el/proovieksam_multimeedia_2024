@@ -1,70 +1,73 @@
-<%- include('../../partials/header', { title: product?.id ? 'Muuda toodet' : 'Lisa toode', user }) %>
+<%- include('../../partials/header', { title: product?.id ? 'NEXUS - Edit product' : 'NEXUS - Add product', user }) %>
 
-<section style="padding:16px 0">
-  <div class="card" style="padding:14px;max-width:900px;margin:0 auto">
-    <h2><%= product?.id ? 'Muuda toodet' : 'Lisa toode' %></h2>
+<section class="page-intro compact-intro">
+  <span class="eyebrow">Admin form</span>
+  <h1><%= product?.id ? 'Edit product' : 'Add product' %></h1>
+  <p>Manage name, category, description, price and uploaded product images.</p>
+</section>
 
-    <form method="POST" enctype="multipart/form-data" action="<%= product?.id ? ('/admin/products/' + product.id) : '/admin/products' %>">
-      <div class="grid cols-2">
-        <div class="field">
-          <label>Nimi</label>
-          <input name="name" value="<%= product?.name || '' %>" />
-          <% if (errors?.name) { %><div class="error"><%= errors.name %></div><% } %>
-        </div>
-        <div class="field">
-          <label>Kategooria</label>
-          <input name="category" value="<%= product?.category || '' %>" placeholder="tshirt / hat / mouse / mug" />
-          <% if (errors?.category) { %><div class="error"><%= errors.category %></div><% } %>
-        </div>
+<section class="form-card">
+  <form method="POST" enctype="multipart/form-data" action="<%= product?.id ? ('/admin/products/' + product.id) : '/admin/products' %>">
+    <div class="split-layout">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" value="<%= product?.name || '' %>">
+        <% if (errors?.name) { %><div class="error"><%= errors.name %></div><% } %>
       </div>
 
       <div class="field">
-        <label>Kirjeldus</label>
-        <textarea name="description" rows="4"><%= product?.description || '' %></textarea>
-        <% if (errors?.description) { %><div class="error"><%= errors.description %></div><% } %>
+        <label for="category">Category</label>
+        <input id="category" name="category" value="<%= product?.category || '' %>" placeholder="tshirt / hat / mouse / mug">
+        <% if (errors?.category) { %><div class="error"><%= errors.category %></div><% } %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="4"><%= product?.description || '' %></textarea>
+      <% if (errors?.description) { %><div class="error"><%= errors.description %></div><% } %>
+    </div>
+
+    <div class="split-layout">
+      <div class="field">
+        <label for="price">Price</label>
+        <input id="price" name="price" type="number" step="0.01" value="<%= product?.price || '' %>">
+        <% if (errors?.price) { %><div class="error"><%= errors.price %></div><% } %>
       </div>
 
-      <div class="grid cols-2">
-        <div class="field">
-          <label>Hind (€)</label>
-          <input name="price" type="number" step="0.01" value="<%= product?.price || '' %>" />
-          <% if (errors?.price) { %><div class="error"><%= errors.price %></div><% } %>
-        </div>
-        <div class="field">
-          <label>Pildid</label>
-          <input name="images" type="file" multiple accept="image/*" />
-          <div class="muted">Valikuline: kuni 6 faili.</div>
-        </div>
+      <div class="field">
+        <label for="images">Images</label>
+        <input id="images" name="images" type="file" multiple accept="image/*">
+      </div>
+    </div>
+
+    <div class="split-layout">
+      <div class="field">
+        <label for="sizes">Sizes</label>
+        <input id="sizes" name="sizes" value="<%= product?.sizes || '' %>" placeholder="S, M, L, XL">
       </div>
 
-      <div class="grid cols-2">
-        <div class="field">
-          <label>Suurused (komadega)</label>
-          <input name="sizes" value="<%= product?.sizes || '' %>" placeholder="S,M,L,XL" />
-        </div>
-        <div class="field">
-          <label>Värvid (komadega)</label>
-          <input name="colors" value="<%= product?.colors || '' %>" placeholder="Must, Roheline, Valge" />
-        </div>
+      <div class="field">
+        <label for="colors">Colors</label>
+        <input id="colors" name="colors" value="<%= product?.colors || '' %>" placeholder="Black, Green, White">
       </div>
+    </div>
 
-      <% if (images?.length) { %>
-        <div class="field">
-          <label>Olemasolevad pildid</label>
-          <div class="grid cols-3">
-            <% images.forEach(i => { %>
-              <div class="thumb"><img src="<%= i.path %>" alt="" style="width:100%;height:100%;object-fit:cover" /></div>
-            <% }) %>
+    <% if (images?.length) { %>
+      <div class="existing-images">
+        <% images.forEach((image) => { %>
+          <div class="existing-image">
+            <img src="<%= image.path %>" alt="Existing product image">
           </div>
-        </div>
-      <% } %>
-
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn primary" type="submit">Salvesta</button>
-        <a class="btn" href="/admin/products">Tagasi</a>
+        <% }) %>
       </div>
-    </form>
-  </div>
+    <% } %>
+
+    <div class="hero-actions">
+      <button class="button primary" type="submit">Save</button>
+      <a class="button ghost" href="/admin/products">Back</a>
+    </div>
+  </form>
 </section>
 
 <%- include('../../partials/footer') %>

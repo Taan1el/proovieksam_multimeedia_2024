@@ -1,34 +1,38 @@
-<%- include('../partials/header', { title: 'Admin – kontaktid', user }) %>
+<%- include('../partials/header', { title: 'NEXUS - Contact inbox', user }) %>
 
-<section style="padding:16px 0">
-  <div class="card" style="padding:14px">
-    <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
-      <div>
-        <h2 style="margin:0">Kontaktid</h2>
-        <div class="muted">Sõnumid kontaktivormist (<code>db.json</code>)</div>
-      </div>
-      <a class="btn" href="/admin/products">← Toodete juurde</a>
-    </div>
+<section class="page-intro compact-intro">
+  <span class="eyebrow">Admin inbox</span>
+  <h1>Contact messages</h1>
+  <p>Messages from the public contact form are listed here for quick review.</p>
+</section>
 
-    <div class="card" style="padding:14px;margin-top:12px">
-      <table>
-        <thead>
-          <tr><th>#</th><th>Nimi</th><th>E-post</th><th>Sõnum</th><th>Aeg</th></tr>
-        </thead>
-        <tbody>
-          <% contacts.forEach(c => { %>
-            <tr>
-              <td><%= c.id %></td>
-              <td><%= c.name %></td>
-              <td class="muted"><%= c.email %></td>
-              <td><%= c.message %></td>
-              <td class="muted"><%= c.created_at %></td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<section class="dashboard-actions">
+  <a class="button ghost" href="/admin/products">Back to products</a>
+</section>
+
+<section class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Message</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach((contact) => { %>
+        <tr>
+          <td><%= contact.id %></td>
+          <td><strong><%= contact.name %></strong></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.message %></td>
+          <td><%= contact.created_at %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </section>
 
 <%- include('../partials/footer') %>

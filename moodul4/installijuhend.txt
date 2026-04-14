@@ -1,9 +1,14 @@
 Module 4 - install guide
 ========================
 
+Chosen variant
+--------------
+This module is built as the `Custom Backend` version of the exam task.
+
 Required software
 -----------------
 - Node.js LTS
+- npm
 - text editor or IDE
 - Git if the project is cloned from a repository
 
@@ -19,6 +24,15 @@ Default address
 ---------------
 `http://localhost:3005`
 
+Default admin login
+-------------------
+- E-mail: value from `.env`
+- Password: value from `.env`
+
+If `.env` is not changed, the fallback values used by the backend are:
+- `admin@example.com`
+- `admin123`
+
 Routes to check in browser
 --------------------------
 - Home page: `http://localhost:3005/`
@@ -26,7 +40,13 @@ Routes to check in browser
 - Product detail: `http://localhost:3005/product/1`
 - Contact: `http://localhost:3005/contact`
 - Admin login: `http://localhost:3005/admin/login`
+- Product admin: `http://localhost:3005/admin/products`
 - Saved contacts: `http://localhost:3005/admin/contacts`
+
+How the contact form works
+--------------------------
+- A submitted message is saved into `moodul4/backend/db.json`
+- The same message can then be seen in the admin view at `/admin/contacts`
 
 Static Module 3 site
 --------------------

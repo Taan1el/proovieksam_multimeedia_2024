@@ -35,10 +35,10 @@ const TEAM_PLAYERS = [
 ];
 
 const GAMES = [
-  { tag: '01', title: 'EA SPORTS FC', copy: 'Fast tempo, pressure play and set-piece discipline.' },
-  { tag: '02', title: 'Rocket League', copy: 'Mechanical reads, rotations and aerial control.' },
-  { tag: '03', title: 'Counter-Strike 2', copy: 'Default structure, site hits and clutch-heavy executes.' },
-  { tag: '04', title: 'Valorant', copy: 'Utility layering, map control and late-round composure.' },
+  { logo: '/games/ea-sports-fc.svg', title: 'EA SPORTS FC', copy: 'Fast tempo, pressure play and set-piece discipline.' },
+  { logo: '/games/rocket-league.svg', title: 'Rocket League', copy: 'Mechanical reads, rotations and aerial control.' },
+  { logo: '/games/counter-strike-2.svg', title: 'Counter-Strike 2', copy: 'Default structure, site hits and clutch-heavy executes.' },
+  { logo: '/games/valorant.svg', title: 'Valorant', copy: 'Utility layering, map control and late-round composure.' },
 ];
 
 const RECENT_MATCHES = [

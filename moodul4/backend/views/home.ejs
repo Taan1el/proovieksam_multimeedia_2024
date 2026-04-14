@@ -58,7 +58,9 @@
   <div class="game-grid">
     <% games.forEach((game) => { %>
       <article class="game-card">
-        <span class="game-tag"><%= game.tag %></span>
+        <span class="game-tag">
+          <img class="game-logo" src="<%= game.logo %>" alt="<%= game.title %> logo">
+        </span>
         <strong><%= game.title %></strong>
         <p><%= game.copy %></p>
       </article>
@@ -78,13 +80,13 @@
     </div>
   </div>
 
-  <div class="table-card">
-    <table>
+  <div class="table-card compact-home-table recent-results-table">
+    <table class="home-table">
       <thead>
         <tr>
           <th>Date</th>
           <th>Opponent</th>
-          <th>Venue</th>
+          <th class="col-venue">Venue</th>
           <th>Score</th>
           <th>Result</th>
         </tr>
@@ -94,7 +96,7 @@
           <tr>
             <td><%= match.date %></td>
             <td><strong><%= match.opponent %></strong></td>
-            <td><%= match.venue %></td>
+            <td class="col-venue"><%= match.venue %></td>
             <td class="score"><%= match.score %></td>
             <td><span class="result-badge result-<%= match.result.toLowerCase() %>"><%= match.result %></span></td>
           </tr>
@@ -111,16 +113,16 @@
     <p>NEXUS leads the table on round differential, pressure stats and late-round conversion.</p>
   </div>
 
-  <div class="table-card">
-    <table>
+  <div class="table-card compact-home-table standings-table-card">
+    <table class="home-table">
       <thead>
         <tr>
           <th>#</th>
           <th>Team</th>
           <th>M</th>
           <th>W</th>
-          <th>D</th>
-          <th>L</th>
+          <th class="col-draws">D</th>
+          <th class="col-losses">L</th>
           <th>Pts</th>
         </tr>
       </thead>
@@ -131,8 +133,8 @@
             <td><strong><%= row.team %></strong></td>
             <td><%= row.played %></td>
             <td><%= row.wins %></td>
-            <td><%= row.draws %></td>
-            <td><%= row.losses %></td>
+            <td class="col-draws"><%= row.draws %></td>
+            <td class="col-losses"><%= row.losses %></td>
             <td><%= row.points %></td>
           </tr>
         <% }) %>

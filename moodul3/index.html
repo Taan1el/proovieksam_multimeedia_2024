@@ -214,22 +214,30 @@
     </div>
     <div class="games-grid">
       <article class="game-card">
-        <span class="game-tag">01</span>
+        <span class="game-tag">
+          <img class="game-logo" src="./assets/img/games/ea-sports-fc.svg" alt="EA Sports FC logo">
+        </span>
         <strong>EA SPORTS FC</strong>
         <p>Fast tempo, pressure play and set-piece discipline.</p>
       </article>
       <article class="game-card">
-        <span class="game-tag">02</span>
+        <span class="game-tag">
+          <img class="game-logo" src="./assets/img/games/rocket-league.svg" alt="Rocket League logo">
+        </span>
         <strong>Rocket League</strong>
         <p>Mechanical reads, rotations and aerial control.</p>
       </article>
       <article class="game-card">
-        <span class="game-tag">03</span>
+        <span class="game-tag">
+          <img class="game-logo" src="./assets/img/games/counter-strike-2.svg" alt="Counter-Strike 2 logo">
+        </span>
         <strong>Counter-Strike 2</strong>
         <p>Default structure, site hits and clutch-heavy executes.</p>
       </article>
       <article class="game-card">
-        <span class="game-tag">04</span>
+        <span class="game-tag">
+          <img class="game-logo" src="./assets/img/games/valorant.svg" alt="Valorant logo">
+        </span>
         <strong>Valorant</strong>
         <p>Utility layering, map control and late-round composure.</p>
       </article>
@@ -253,13 +261,13 @@
         </div>
       </div>
 
-      <div class="games-table-wrap">
-        <table class="games-table">
+      <div class="games-table-wrap compact-table-wrap recent-results-wrap">
+        <table class="games-table compact-table compact-results-table">
           <thead>
             <tr>
               <th>Date</th>
               <th>Opponent</th>
-              <th>Venue</th>
+              <th class="col-venue">Venue</th>
               <th>Score</th>
               <th>Result</th>
             </tr>
@@ -268,35 +276,35 @@
             <tr>
               <td>10.09.2024</td>
               <td><strong>ALPHA FC</strong></td>
-              <td>Home</td>
+              <td class="col-venue">Home</td>
               <td class="score">3 - 1</td>
               <td><span class="result-badge result-w">WIN</span></td>
             </tr>
             <tr>
               <td>18.09.2024</td>
               <td><strong>Storm United</strong></td>
-              <td>Away</td>
+              <td class="col-venue">Away</td>
               <td class="score">1 - 2</td>
               <td><span class="result-badge result-l">LOSS</span></td>
             </tr>
             <tr>
               <td>25.09.2024</td>
               <td><strong>Vega Sports</strong></td>
-              <td>Home</td>
+              <td class="col-venue">Home</td>
               <td class="score">2 - 2</td>
               <td><span class="result-badge result-d">DRAW</span></td>
             </tr>
             <tr>
               <td>02.10.2024</td>
               <td><strong>Titan XI</strong></td>
-              <td>Home</td>
+              <td class="col-venue">Home</td>
               <td class="score">4 - 0</td>
               <td><span class="result-badge result-w">WIN</span></td>
             </tr>
             <tr>
               <td>15.10.2024</td>
               <td><strong>Nordex FC</strong></td>
-              <td>Away</td>
+              <td class="col-venue">Away</td>
               <td class="score">2 - 1</td>
               <td><span class="result-badge result-w">WIN</span></td>
             </tr>
@@ -318,16 +326,16 @@
         <p>NEXUS leads the table on round differential, pressure stats and late-round conversion.</p>
       </div>
 
-      <div class="games-table-wrap">
-        <table class="games-table">
+      <div class="games-table-wrap compact-table-wrap standings-table-wrap">
+        <table class="games-table compact-table compact-standings-table">
           <thead>
             <tr>
               <th>#</th>
               <th>Team</th>
               <th>M</th>
               <th>W</th>
-              <th>D</th>
-              <th>L</th>
+              <th class="col-draws">D</th>
+              <th class="col-losses">L</th>
               <th>Pts</th>
             </tr>
           </thead>
@@ -337,8 +345,8 @@
               <td><strong>NEXUS</strong></td>
               <td>12</td>
               <td>8</td>
-              <td>2</td>
-              <td>2</td>
+              <td class="col-draws">2</td>
+              <td class="col-losses">2</td>
               <td>26</td>
             </tr>
             <tr>
@@ -346,8 +354,8 @@
               <td>Titan XI</td>
               <td>12</td>
               <td>7</td>
-              <td>1</td>
-              <td>4</td>
+              <td class="col-draws">1</td>
+              <td class="col-losses">4</td>
               <td>22</td>
             </tr>
             <tr>
@@ -355,8 +363,8 @@
               <td>Nordex FC</td>
               <td>12</td>
               <td>6</td>
-              <td>3</td>
-              <td>3</td>
+              <td class="col-draws">3</td>
+              <td class="col-losses">3</td>
               <td>21</td>
             </tr>
             <tr>
@@ -364,8 +372,8 @@
               <td>ALPHA FC</td>
               <td>12</td>
               <td>5</td>
-              <td>2</td>
-              <td>5</td>
+              <td class="col-draws">2</td>
+              <td class="col-losses">5</td>
               <td>17</td>
             </tr>
             <tr>
@@ -373,8 +381,8 @@
               <td>Storm United</td>
               <td>12</td>
               <td>3</td>
-              <td>2</td>
-              <td>7</td>
+              <td class="col-draws">2</td>
+              <td class="col-losses">7</td>
               <td>11</td>
             </tr>
           </tbody>

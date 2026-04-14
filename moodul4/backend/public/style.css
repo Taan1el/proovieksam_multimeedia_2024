@@ -32,6 +32,8 @@ body {
   color: var(--text);
   background:
     radial-gradient(circle at 82% 0%, rgba(143, 56, 255, 0.09), transparent 22%),
+    radial-gradient(circle at 18% 100%, rgba(0, 240, 181, 0.08), transparent 24%),
+    radial-gradient(circle at 78% 100%, rgba(0, 240, 181, 0.04), transparent 28%),
     radial-gradient(circle at 0% 100%, rgba(143, 56, 255, 0.05), transparent 26%),
     linear-gradient(180deg, #050507 0%, #08090d 46%, #050507 100%);
 }
@@ -353,18 +355,23 @@ a {
 }
 
 .game-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
+  display: inline-grid;
+  place-items: center;
+  width: 118px;
+  height: 56px;
   margin-bottom: 1rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent), #cb5df3);
-  color: #15091d;
-  font-family: var(--font-head);
-  font-size: 1.55rem;
-  letter-spacing: 0.08em;
+  padding: 0.65rem 0.85rem;
+  border-radius: 16px;
+  background: rgba(244, 240, 251, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.game-logo {
+  width: 100%;
+  max-width: 92px;
+  max-height: 28px;
+  object-fit: contain;
 }
 
 .game-card strong,
@@ -721,6 +728,60 @@ td strong {
   .detail-card h2,
   .hero-panel h2 {
     font-size: clamp(2.4rem, 13vw, 4rem);
+  }
+
+  .record-value {
+    font-size: clamp(2.2rem, 11vw, 3.3rem);
+  }
+
+  .feature-card p,
+  .detail-card p {
+    font-size: 0.96rem;
+  }
+
+  .hero-tags {
+    gap: 0.55rem;
+  }
+
+  .hero-tags span {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.76rem;
+  }
+
+  .compact-home-table {
+    overflow: visible;
+  }
+
+  .compact-home-table table {
+    min-width: 0;
+  }
+
+  .compact-home-table th,
+  .compact-home-table td {
+    padding: 0.8rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .compact-home-table th {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  .compact-home-table .score {
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+
+  .compact-home-table .result-badge {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .recent-results-table .col-venue,
+  .standings-table-card .col-draws,
+  .standings-table-card .col-losses {
+    display: none;
   }
 
   .footer-inner {

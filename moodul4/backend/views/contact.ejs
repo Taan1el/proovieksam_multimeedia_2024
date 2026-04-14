@@ -1,37 +1,60 @@
-<%- include('partials/header', { title: 'Kontakt', user }) %>
+<%- include('partials/header', { title: 'NEXUS - Contact', user }) %>
 
-<section style="padding:16px 0" class="grid cols-2">
-  <div class="card" style="padding:14px">
-    <h2>Kontaktivorm</h2>
-    <p class="muted">Sõnumid salvestatakse faili <code>db.json</code> (<code>contacts</code> massiiv), mitte SQLite.</p>
+<section class="page-intro compact-intro">
+  <span class="eyebrow">Contact</span>
+  <h1>Reach the team</h1>
+  <p>Use the form for collabs, orders, event invites or any match-day support request.</p>
+</section>
+
+<section class="split-layout">
+  <div class="form-card">
+    <h2>Contact form</h2>
 
     <% if (ok) { %>
-      <div class="card" style="padding:12px;border-color:rgba(34,197,94,.5)">Sõnum on saadetud.</div>
+      <div class="success-banner">Thanks! Your message has been sent.</div>
     <% } %>
 
     <form method="POST" action="/contact">
       <div class="field">
-        <label>Nimi</label>
-        <input name="name" autocomplete="name" />
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="name">
         <% if (errors?.name) { %><div class="error"><%= errors.name %></div><% } %>
       </div>
+
       <div class="field">
-        <label>E-post</label>
-        <input name="email" type="email" autocomplete="email" />
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email">
         <% if (errors?.email) { %><div class="error"><%= errors.email %></div><% } %>
       </div>
+
       <div class="field">
-        <label>Sõnum</label>
-        <textarea name="message" rows="5"></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6"></textarea>
         <% if (errors?.message) { %><div class="error"><%= errors.message %></div><% } %>
       </div>
-      <button class="btn green" type="submit">Saada</button>
+
+      <button class="button primary" type="submit">Send message</button>
     </form>
   </div>
-  <div class="card" style="padding:14px">
-    <h2>Kontaktandmed</h2>
-    <div class="muted">hello@nexus.gg</div>
-    <div class="muted">+372 5555 5555</div>
+
+  <div class="feature-card">
+    <span class="eyebrow">Info</span>
+    <h2>NEXUS HQ</h2>
+    <p>Use the form for store support, event invites, collabs or questions about the live drop.</p>
+    <div class="detail-list">
+      <div>
+        <strong>Email</strong>
+        <span>hello@nexus.gg</span>
+      </div>
+      <div>
+        <strong>Phone</strong>
+        <span>+372 5555 5555</span>
+      </div>
+      <div>
+        <strong>Location</strong>
+        <span>Tallinn, Estonia</span>
+      </div>
+    </div>
   </div>
 </section>
 

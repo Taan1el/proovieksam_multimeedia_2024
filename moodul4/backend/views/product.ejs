@@ -1,64 +1,89 @@
 <%- include('partials/header', { title: product.name, user }) %>
 
-<section style="padding:16px 0" class="grid cols-2">
-  <div class="card" style="padding:14px">
-    <div class="carousel" data-carousel style="position:relative">
-      <div class="carousel-main" style="height:280px;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)">
-        <% if (images.length) { %>
-          <% images.forEach((img, i) => { %>
-            <img class="carousel-slide" data-slide="<%= i %>" src="<%= img.path %>" alt="" style="width:100%;height:100%;object-fit:cover;display:<%= i === 0 ? 'block' : 'none' %>" />
-          <% }) %>
-        <% } else { %>
-          <div style="height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted)">Pilte pole veel lisatud</div>
-        <% } %>
-      </div>
-      <% if (images.length > 1) { %>
-        <div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px">
-          <button class="btn" type="button" data-car-prev>◀</button>
-          <button class="btn" type="button" data-car-next>▶</button>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-          <% images.forEach((img, i) => { %>
-            <button type="button" class="btn" data-thumb="<%= i %>" style="padding:0;width:64px;height:64px;border-radius:12px;overflow:hidden">
-              <img src="<%= img.path %>" alt="" style="width:100%;height:100%;object-fit:cover" />
-            </button>
-          <% }) %>
-        </div>
+<section class="page-intro compact-intro">
+  <span class="eyebrow">Product detail</span>
+  <h1><%= product.name %></h1>
+  <p>Detailed product page with image gallery, available sizes, colors and full merch info.</p>
+</section>
+
+<section class="split-layout">
+  <div class="gallery-card">
+    <div class="gallery-main">
+      <% if (images.length) { %>
+        <% images.forEach((image, index) => { %>
+          <img class="gallery-slide" data-slide="<%= index %>" src="<%= image.path %>" alt="<%= product.name %>" style="display:<%= index === 0 ? 'block' : 'none' %>">
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">No images uploaded yet.</div>
       <% } %>
     </div>
-    <div class="muted" style="padding-top:10px">Pilte: <%= images.length %></div>
+
+    <% if (images.length > 1) { %>
+      <div class="gallery-actions">
+        <button class="button ghost" type="button" data-car-prev>&#9664;</button>
+        <button class="button ghost" type="button" data-car-next>&#9654;</button>
+      </div>
+      <div class="gallery-thumbs">
+        <% images.forEach((image, index) => { %>
+          <button type="button" data-thumb="<%= index %>">
+            <img src="<%= image.path %>" alt="<%= product.name %> thumbnail">
+          </button>
+        <% }) %>
+      </div>
+    <% } %>
   </div>
 
-  <div class="card" style="padding:14px">
-    <div class="muted"><%= product.category %></div>
-    <h2 style="margin:8px 0 6px"><%= product.name %></h2>
-    <div class="muted"><%= product.description %></div>
-    <div style="margin:12px 0"><b>€<%= product.price %></b></div>
-    <div class="muted">Suurused: <%= product.sizes || '–' %></div>
-    <div class="muted">Värvid: <%= product.colors || '–' %></div>
-    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn primary" type="button">Lisa korvi</button>
-      <a class="btn" href="/shop">Tagasi poodi</a>
+  <div class="detail-card">
+    <span class="eyebrow">Catalog entry</span>
+    <h2><%= product.name %></h2>
+    <p><%= product.description %></p>
+    <div class="detail-price">EUR <%= product.price %></div>
+    <div class="detail-list">
+      <div>
+        <strong>Category</strong>
+        <span><%= product.category %></span>
+      </div>
+      <div>
+        <strong>Sizes</strong>
+        <span><%= product.sizes || '-' %></span>
+      </div>
+      <div>
+        <strong>Colors</strong>
+        <span><%= product.colors || '-' %></span>
+      </div>
+      <div>
+        <strong>Images</strong>
+        <span><%= images.length %></span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a class="button primary" href="/shop">Back to store</a>
+      <% if (user) { %>
+        <a class="button ghost" href="/admin/products/<%= product.id %>/edit">Edit in admin</a>
+      <% } %>
     </div>
   </div>
 </section>
 
 <script>
   (function () {
-    var slides = document.querySelectorAll('.carousel-slide');
+    var slides = document.querySelectorAll('.gallery-slide');
     if (!slides.length) return;
     var idx = 0;
     function show(i) {
       idx = (i + slides.length) % slides.length;
-      slides.forEach(function (s, j) { s.style.display = j === idx ? 'block' : 'none'; });
+      slides.forEach(function (slide, slideIndex) {
+        slide.style.display = slideIndex === idx ? 'block' : 'none';
+      });
     }
     document.querySelector('[data-car-prev]')?.addEventListener('click', function () { show(idx - 1); });
     document.querySelector('[data-car-next]')?.addEventListener('click', function () { show(idx + 1); });
-    document.querySelectorAll('[data-thumb]').forEach(function (b) {
-      b.addEventListener('click', function () { show(Number(b.getAttribute('data-thumb'))); });
+    document.querySelectorAll('[data-thumb]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        show(Number(button.getAttribute('data-thumb')));
+      });
     });
   })();
 </script>
 
 <%- include('partials/footer') %>
-

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 520" role="img" aria-labelledby="title desc">
+  <title id="title">Kati Roos player card</title>
+  <desc id="desc">Purple esports-style player card for Kati Roos, flex player.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#11081b"/>
+      <stop offset="55%" stop-color="#2d1249"/>
+      <stop offset="100%" stop-color="#08050d"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="520" rx="28" fill="url(#bg)"/>
+  <circle cx="252" cy="90" r="94" fill="#d699eb" opacity="0.18"/>
+  <circle cx="80" cy="416" r="118" fill="#00f0b5" opacity="0.12"/>
+  <rect x="20" y="20" width="280" height="480" rx="22" fill="none" stroke="#d699eb" stroke-opacity="0.25"/>
+  <text x="30" y="58" fill="#d699eb" font-size="24" font-family="Arial, sans-serif" letter-spacing="3">NEXUS</text>
+  <text x="30" y="94" fill="#ffffff" font-size="64" font-family="Arial, sans-serif" font-weight="700">KR</text>
+  <text x="30" y="122" fill="#b6a0d1" font-size="18" font-family="Arial, sans-serif" letter-spacing="4">FLEX</text>
+  <path d="M158 164c46 0 82 38 82 86v84H76v-84c0-48 36-86 82-86Z" fill="#100919"/>
+  <circle cx="158" cy="138" r="56" fill="#22112f" stroke="#d699eb" stroke-width="4"/>
+  <path d="M158 92c22 0 39 15 39 35 0 17-13 31-31 34v23h-15v-23c-18-3-31-17-31-34 0-20 16-35 38-35Z" fill="#d7aa85"/>
+  <path d="M111 248c15-35 31-53 47-53 20 0 36 18 50 53l23 86H85l26-86Z" fill="#21122f"/>
+  <path d="M118 247h80l28 87H90l28-87Z" fill="#d699eb" opacity="0.86"/>
+  <path d="M158 201c18 0 33 10 45 29-11 13-26 20-45 20s-34-7-45-20c12-19 27-29 45-29Z" fill="#17101f"/>
+  <text x="30" y="384" fill="#eed1ff" font-size="18" font-family="Arial, sans-serif" letter-spacing="4">KATI ROOS</text>
+  <text x="30" y="420" fill="#ffffff" font-size="34" font-family="Arial, sans-serif" font-weight="700">UTILITY FLEX</text>
+  <text x="30" y="450" fill="#dfd1eb" font-size="16" font-family="Arial, sans-serif">Reads utility, anchors space, closes gaps.</text>
+  <rect x="30" y="468" width="116" height="22" rx="11" fill="#d699eb"/>
+  <text x="46" y="484" fill="#150a20" font-size="14" font-family="Arial, sans-serif" font-weight="700">MID CONTROL</text>
+</svg>

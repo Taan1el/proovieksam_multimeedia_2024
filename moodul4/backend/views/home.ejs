@@ -1,0 +1,170 @@
+<%- include('partials/header', { title: 'NEXUS - Home', user }) %>
+
+<section class="hero-block">
+  <div class="hero-copy">
+    <span class="eyebrow">NEXUS ESPORTS // SEASON 2024</span>
+    <h1>Built for the stage.<span>Ready for every round.</span></h1>
+    <p>
+      NEXUS is a competitive esports squad built around sharp entries, tight rotations
+      and a bold identity that carries from match day to every merch drop.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href="/shop">Open store</a>
+      <a class="button ghost" href="/contact">Contact us</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-panel">
+      <div class="hero-panel-copy">
+        <span class="eyebrow">Featured match</span>
+        <h2><%= featuredMatch.title %></h2>
+        <p><%= featuredMatch.copy %></p>
+      </div>
+      <div class="hero-tags">
+        <% featuredMatch.meta.forEach((item) => { %>
+          <span><%= item %></span>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <article><strong>12</strong><span>Matches played</span></article>
+  <article><strong>8</strong><span>Wins</span></article>
+  <article><strong>6</strong><span>Catalog items</span></article>
+  <article><strong>24/7</strong><span>Team mode</span></article>
+</section>
+
+<section class="section-stack">
+  <div class="section-heading">
+    <span class="eyebrow">Roster</span>
+    <h2>Top team players</h2>
+  </div>
+  <div class="players-grid">
+    <% players.forEach((player) => { %>
+      <article class="player-card">
+        <img src="<%= player.image %>" alt="<%= player.alt %>">
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section-stack">
+  <div class="section-heading">
+    <span class="eyebrow">Games</span>
+    <h2>Games we play</h2>
+  </div>
+  <div class="game-grid">
+    <% games.forEach((game) => { %>
+      <article class="game-card">
+        <span class="game-tag"><%= game.tag %></span>
+        <strong><%= game.title %></strong>
+        <p><%= game.copy %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section-stack split-layout">
+  <div class="feature-card">
+    <span class="eyebrow">Schedule</span>
+    <h2><%= featuredMatch.title %></h2>
+    <p><%= featuredMatch.copy %></p>
+    <div class="hero-tags">
+      <% featuredMatch.meta.forEach((item) => { %>
+        <span><%= item %></span>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Opponent</th>
+          <th>Venue</th>
+          <th>Score</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% recentMatches.forEach((match) => { %>
+          <tr>
+            <td><%= match.date %></td>
+            <td><strong><%= match.opponent %></strong></td>
+            <td><%= match.venue %></td>
+            <td class="score"><%= match.score %></td>
+            <td><span class="result-badge result-<%= match.result.toLowerCase() %>"><%= match.result %></span></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section-stack split-layout">
+  <div class="feature-card">
+    <span class="eyebrow">Standings</span>
+    <div class="record-value">8-2-2</div>
+    <p>NEXUS leads the table on round differential, pressure stats and late-round conversion.</p>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Team</th>
+          <th>M</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% standings.forEach((row) => { %>
+          <tr class="<%= row.highlight ? 'is-highlight' : '' %>">
+            <td><%= row.rank %></td>
+            <td><strong><%= row.team %></strong></td>
+            <td><%= row.played %></td>
+            <td><%= row.wins %></td>
+            <td><%= row.draws %></td>
+            <td><%= row.losses %></td>
+            <td><%= row.points %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section-stack">
+  <div class="section-heading">
+    <span class="eyebrow">Merch</span>
+    <h2>Popular drops</h2>
+  </div>
+  <div class="product-grid">
+    <% featuredProducts.forEach((product) => { %>
+      <a class="product-card" href="/product/<%= product.id %>">
+        <div class="product-thumb">
+          <% if (product.thumb) { %>
+            <img src="<%= product.thumb %>" alt="<%= product.name %>">
+          <% } %>
+        </div>
+        <div class="product-body">
+          <strong><%= product.name %></strong>
+          <span><%= product.description %></span>
+          <div class="product-meta">
+            <small><%= product.category %></small>
+            <b>EUR <%= product.price %></b>
+          </div>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

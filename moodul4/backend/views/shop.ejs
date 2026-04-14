@@ -1,51 +1,62 @@
-<%- include('partials/header', { title: 'E-pood', user }) %>
+<%- include('partials/header', { title: 'NEXUS - Store', user }) %>
 
-<section style="padding:16px 0">
-  <h2>E-pood</h2>
-  <p class="muted">Kategooriafilter, max hind ja sorteerimine (Multimeedia eksami nõue).</p>
+<section class="page-intro">
+  <span class="eyebrow">Store</span>
+  <h1>Official NEXUS merch</h1>
+  <p>Official team store with fast filters, price control and quick access to every drop.</p>
+</section>
 
-  <form method="GET" action="/shop" class="card" style="padding:14px;margin:12px 0;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end">
-    <div class="field" style="margin:0">
-      <label>Kategooria</label>
-      <select name="category">
-        <% const c = String(query?.category || 'all'); %>
-        <option value="all" <%= c === 'all' ? 'selected' : '' %>>Kõik</option>
-        <option value="tshirt" <%= c === 'tshirt' ? 'selected' : '' %>>T-särk</option>
-        <option value="mouse" <%= c === 'mouse' ? 'selected' : '' %>>Hiir</option>
-        <option value="hat" <%= c === 'hat' ? 'selected' : '' %>>Müts</option>
-        <option value="mug" <%= c === 'mug' ? 'selected' : '' %>>Kruus</option>
+<section class="filter-card">
+  <form method="GET" action="/shop" class="filter-grid">
+    <div class="field">
+      <label for="category">Category</label>
+      <% const currentCategory = String(query?.category || 'all'); %>
+      <select id="category" name="category">
+        <option value="all" <%= currentCategory === 'all' ? 'selected' : '' %>>All</option>
+        <option value="tshirt" <%= currentCategory === 'tshirt' ? 'selected' : '' %>>Shirts</option>
+        <option value="mouse" <%= currentCategory === 'mouse' ? 'selected' : '' %>>Mouse</option>
+        <option value="hat" <%= currentCategory === 'hat' ? 'selected' : '' %>>Cap</option>
+        <option value="mug" <%= currentCategory === 'mug' ? 'selected' : '' %>>Mug</option>
       </select>
     </div>
-    <div class="field" style="margin:0">
-      <label>Sorteeri</label>
-      <% const s = String(query?.sort || 'name'); %>
-      <select name="sort">
-        <option value="name" <%= s === 'name' ? 'selected' : '' %>>Nimi</option>
-        <option value="price-asc" <%= s === 'price-asc' ? 'selected' : '' %>>Hind ↑</option>
-        <option value="price-desc" <%= s === 'price-desc' ? 'selected' : '' %>>Hind ↓</option>
+
+    <div class="field">
+      <label for="sort">Sort</label>
+      <% const currentSort = String(query?.sort || 'name'); %>
+      <select id="sort" name="sort">
+        <option value="name" <%= currentSort === 'name' ? 'selected' : '' %>>Name</option>
+        <option value="price-asc" <%= currentSort === 'price-asc' ? 'selected' : '' %>>Price low-high</option>
+        <option value="price-desc" <%= currentSort === 'price-desc' ? 'selected' : '' %>>Price high-low</option>
       </select>
     </div>
-    <div class="field" style="margin:0">
-      <label>Max hind (€)</label>
-      <input name="maxPrice" type="number" step="1" min="1" value="<%= query?.maxPrice || 9999 %>" />
+
+    <div class="field">
+      <label for="maxPrice">Max price</label>
+      <input id="maxPrice" name="maxPrice" type="number" min="1" step="1" value="<%= query?.maxPrice || 9999 %>">
     </div>
-    <button class="btn primary" type="submit">Rakenda</button>
-    <a class="btn" href="/shop">Lähtesta</a>
+
+    <div class="filter-actions">
+      <button class="button primary" type="submit">Apply</button>
+      <a class="button ghost" href="/shop">Reset</a>
+    </div>
   </form>
 </section>
 
-<section class="grid cols-3">
-  <% products.forEach(p => { %>
-    <a class="card product" href="/product/<%= p.id %>" style="text-decoration:none;color:inherit">
-      <div class="thumb" style="overflow:hidden">
-        <% if (p.thumb) { %>
-          <img src="<%= p.thumb %>" alt="" style="width:100%;height:100%;object-fit:cover" />
+<section class="product-grid">
+  <% products.forEach((product) => { %>
+    <a class="product-card" href="/product/<%= product.id %>">
+      <div class="product-thumb">
+        <% if (product.thumb) { %>
+          <img src="<%= product.thumb %>" alt="<%= product.name %>">
         <% } %>
       </div>
-      <b><%= p.name %></b>
-      <div class="row">
-        <span class="muted"><%= p.category %></span>
-        <span><b>€<%= p.price %></b></span>
+      <div class="product-body">
+        <strong><%= product.name %></strong>
+        <span><%= product.description %></span>
+        <div class="product-meta">
+          <small><%= product.category %></small>
+          <b>EUR <%= product.price %></b>
+        </div>
       </div>
     </a>
   <% }) %>
